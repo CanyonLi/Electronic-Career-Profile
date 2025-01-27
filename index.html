@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- 移动端视口设置 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- 移动端视口设置：这句非常重要 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta name="description" content="I am Yuechuan (Canyon) Li, a curious high school senior with a passion for AI-driven education and clean energy research. Connect with me to explore new frontiers in tech and STEM education."/>
   <meta property="og:title" content="Yuechuan (Canyon) Li - AI Entrepreneur"/>
@@ -15,14 +15,14 @@
   <title>Yuechuan (Canyon) Li - AI Entrepreneur</title>
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link 
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;500&display=swap" 
     rel="stylesheet"
   >
   
-  <!-- Font Awesome -->
+  <!-- Font Awesome （注意替换为你真实的 kit）-->
   <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
   
   <style>
@@ -192,7 +192,7 @@
     .about-right {
       grid-column: 7 / 13;
       display: flex;
-      flex-direction: column; /* 让轮播与文字可以上下排布 */
+      flex-direction: column; /* 让轮播与下面的文字/Caption上下排布 */
       align-items: center;
       justify-content: flex-start;
     }
@@ -207,7 +207,7 @@
       margin-bottom: 15px;
     }
 
-    /* 轮播 */
+    /* 轮播容器 */
     .carousel {
       width: 550px;
       height: 500px;
@@ -268,33 +268,26 @@
 
 
     /* 
-      =========================
-      Projects (横向卡片布局)
-      =========================
+      ========== Projects ==========
+      使用 Flexbox 横向排列
     */
- 
-
-    /* 项目容器样式 */
     .project-container {
-      display: flex; /* 使用 Flexbox 横向排列 */
-      gap: 20px;     /* 卡片之间的间距 */
-      justify-content: center; /* 水平居中对齐 */
-      align-items: flex-start; /* 卡片顶部对齐 */
-      flex-wrap: wrap; /* 如果屏幕不够宽，自动换行 */
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
       margin-top: 40px;
     }
-
-    /* 单个项目卡片样式 */
     .project-card {
       background: var(--color-navbar-bg);
       border-radius: 12px;
       padding: 20px;
       width: 250px;
-      /* 让三张卡片“等高” */
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 220px; /* 你可以视需要调整高度 */
+      min-height: 220px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
       transition: transform 0.3s ease;
@@ -302,7 +295,6 @@
     .project-card:hover {
       transform: translateY(-10px);
     }
-
     .project-card h3 {
       font-family: var(--font-title);
       font-size: 1.2rem;
@@ -312,7 +304,6 @@
       margin-bottom: 15px;
       font-size: 1rem;
     }
-
     .see-more-btn {
       display: inline-block;
       margin-top: 10px;
@@ -324,24 +315,11 @@
       text-decoration: none;
       transition: background 0.3s ease;
       cursor: pointer;
-      border: none; /* 用 button 就可不用边框 */
+      border: none;
     }
     .see-more-btn:hover {
       background-color: #f3d484;
     }
-
-    /* 响应式支持：小屏幕自动变为纵向排列 */
-    @media (max-width: 768px) {
-      .project-container {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-      }
-      .project-card {
-        width: 90%;
-      }
-    }
-
 
     /* ========== Achievements - 卡片示例 ========== */
     #achievements .cards {
@@ -417,7 +395,7 @@
       font-size: 0.9rem;
     }
 
-    /* ========== 补充: Modal/Overlay 的必要 CSS ========== */
+    /* ========== Modal/Overlay CSS ========== */
     .hidden {
       display: none !important;
     }
@@ -428,8 +406,8 @@
       right: 0;
       bottom: 0;
       background: rgba(0, 0, 0, 0.6);
-      z-index: 9999; /* 确保在最顶层 */
-      display: none; /* 初始隐藏 */
+      z-index: 9999;
+      display: none;
     }
     .overlay:not(.hidden) {
       display: block;
@@ -442,13 +420,13 @@
       width: 90%;
       max-width: 700px;
       background: #fff;
-      color: #000; /* Modal 内文字改回深色 */
+      color: #000;
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      z-index: 10000; /* 比 overlay 更高 */
+      z-index: 10000;
       display: none;
-      max-height: 80vh; /* 防止内容过高 */
-      overflow-y: auto; /* 内容过多时滚动 */
+      max-height: 80vh;
+      overflow-y: auto;
       padding: 20px;
     }
     .modal.show {
@@ -461,9 +439,44 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: #333;
+      position: absolute;
+      top: 15px;
+      right: 20px;
     }
     .close-modal:hover {
       color: #666;
+    }
+
+    /* 
+      ========== 关键：在小屏幕下，让右侧轮播移动到上方 + 宽度缩放至80% ==========
+    */
+    @media (max-width: 768px) {
+      /* 让about区域只剩1列 */
+      #about .about-container {
+        grid-template-columns: 1fr; 
+        row-gap: 30px;
+      }
+
+      /* 先让右侧在dom顺序里排到上面 */
+      .about-right {
+        order: -1;
+        grid-column: 1 / 2;
+      }
+      .about-left {
+        order: 0;
+        grid-column: 1 / 2;
+      }
+
+      /* 轮播缩小至80%，自适应高度 */
+      .carousel {
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+      }
+      .carousel img {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
@@ -493,6 +506,7 @@
     <section id="about">
       <h2>Get to Know Me</h2>
       <div class="about-container">
+        <!-- 左侧文字简介 -->
         <div class="about-left">
           <div>
             <p class="about-subtitle">Background Experiences</p>
@@ -526,11 +540,11 @@
             <span><i class="fab fa-js-square"></i>JavaScript</span>
           </div>
         </div>
-        <!-- 右侧轮播 + 轮播下方文字 -->
+
+        <!-- 右侧轮播 + 文字caption -->
         <div class="about-right">
           <div class="carousel">
             <div class="carousel-container">
-              <!-- 第一张默认active -->
               <img src="Canyon1.webp" alt="Canyon speaking at a technology conference" class="active" loading="lazy">
             </div>
           </div>
@@ -539,16 +553,13 @@
       </div>
     </section>
 
-    <!-- 
-      ========== Projects Section (横向排列卡片)
-    -->
+    <!-- Projects Section -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="project-container">
         <div class="project-card">
           <h3>KEQI (Tech Insight Studio)</h3>
           <p>Founder &amp; Director</p>
-          <!-- 按钮用 button 或 a 都可以 -->
           <button class="see-more-btn" data-modal="modal-keqi">See more →</button>
         </div>
         <div class="project-card">
@@ -564,61 +575,45 @@
       </div>
     </section>
 
-    <!-- Achievements Section (卡片式) -->
-<section id="achievements">
-    <h2>Achievements</h2>
-    
-    <!-- ========== Honors & Awards ========== -->
-    <h3 style="margin-top: 40px; text-align:center;">Honors &amp; Awards</h3>
-    <div class="cards">
-        <!-- 1. Stanford Full-ride -->
-      <div class="achievement-card">
-        <h4>Stanford 4 years full ride scholarship</h4>
-        <p>Match with STANFORD UNIVERSITY in 2024 Quest Bridge National College Match with 4 years full scholarships</p>
+    <!-- Achievements Section -->
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <h3 style="margin-top: 40px; text-align:center;">Honors &amp; Awards</h3>
+      <div class="cards">
+        <div class="achievement-card">
+          <h4>Stanford 4 years full ride scholarship</h4>
+          <p>Match with STANFORD UNIVERSITY in 2024 Quest Bridge National College Match with 4 years full scholarships</p>
+        </div>
+        <div class="achievement-card">
+          <h4>Completed 12 AP/College Courses as a Junior</h4>
+          <p>Self-studied and successfully earned credits in 12 advanced courses, demonstrating a strong drive for academic excellence.</p>
+        </div>
+        <div class="achievement-card">
+          <h4>2024 US Physics Team &amp; 54th IPhO</h4>
+          <p>Selected to participate in the highly competitive US Physics Team program and the 54th International Physics Olympiad.</p>
+        </div>
+        <div class="achievement-card">
+          <h4>2024 USNCO Finalist</h4>
+          <p>Finalist in the 2024 US National Chemistry Olympiad national exam and one of the TOP 6 representatives from Southern Arizona.</p>
+        </div>
+        <div class="achievement-card">
+          <h4>FBLA State &amp; National Placement</h4>
+          <p>2nd place in the 2022-2023 FBLA State Leadership Conference (Data Analysis) and Top 30 at the National Leadership Conference.</p>
+        </div>
+        <div class="achievement-card">
+          <h4>AIAA “Scientific &amp; Engineering Research Excellence Award”</h4>
+          <p>Honored in 2024 for outstanding PEM Fuel Cell research, highlighting innovative clean energy solutions.</p>
+        </div>
+        <div class="achievement-card">
+          <h4>VAHS Science Olympiad Presient</h4>
+          <p>Led the team to achieve TOP 6 in the 2024 Southern Arizona regional competition</p>
+        </div>
+        <div class="achievement-card">
+          <h4>Commuication Director of Sponsorship and Finance at FBLA Arizona State Council</h4>
+          <p>Collaborate with a team of eight members, securing financial sponsorship &amp; managing assets of AZ FBLA</p>
+        </div>
       </div>
-
-      <!-- 2. 12 AP/college courses -->
-      <div class="achievement-card">
-        <h4>Completed 12 AP/College Courses as a Junior</h4>
-        <p>Self-studied and successfully earned credits in 12 advanced courses, demonstrating a strong drive for academic excellence.</p>
-      </div>
-      
-      <!-- 3. 2024 US Physics Team & IPhO -->
-      <div class="achievement-card">
-        <h4>2024 US Physics Team &amp; 54th IPhO</h4>
-        <p>Selected to participate in the highly competitive US Physics Team program and the 54th International Physics Olympiad.</p>
-      </div>
-  
-      <!-- 4. 2024 US National Chemistry Olympiad -->
-      <div class="achievement-card">
-        <h4>2024 USNCO Finalist</h4>
-        <p>Finalist in the 2024 US National Chemistry Olympiad national exam and one of the TOP 6 representatives from Southern Arizona.</p>
-      </div>
-  
-      <!-- 5. 2nd place at FBLA SLC Data Analysis -->
-      <div class="achievement-card">
-        <h4>FBLA State &amp; National Placement</h4>
-        <p>2nd place in the 2022-2023 FBLA State Leadership Conference (Data Analysis) and Top 30 at the National Leadership Conference.</p>
-      </div>
-  
-      <!-- 6. AIAA Award for PEM Fuel Cell Research -->
-      <div class="achievement-card">
-        <h4>AIAA “Scientific &amp; Engineering Research Excellence Award”</h4>
-        <p>Honored in 2024 for outstanding PEM Fuel Cell research, highlighting innovative clean energy solutions.</p>
-      </div>
-  
-      <!-- 7. VAHS Science Olympiad Presient -->
-      <div class="achievement-card">
-        <h4>VAHS Science Olympiad Presient</h4>
-        <p>Led the team to achieve TOP 6 in the 2024 Southern Arizona regional competition</p>
-      </div>
-
-      <!-- 8. AZ FBLA State Council -->
-      <div class="achievement-card">
-        <h4>Commuication Director of Sponsorship and Finance at FBLA Arizona State Council</h4>
-        <p>Collaborate with a team of eight members, securing financial sponsorship & managing assets of AZ FBLA</p>
-      </div>
-    </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -664,8 +659,7 @@
     </section>
   </main>
 
-  <!-- ========== 3个Modal遮罩 & 详情内容 ========== -->
-
+  <!-- ========== Modal 遮罩 & 详情内容 ========== -->
   <!-- 遮罩层 -->
   <div id="overlay" class="overlay hidden"></div>
 
@@ -776,33 +770,35 @@
           </div>
         <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
         PEM Fuel Cell Researcher<br>@2024 SARSEF & @2024 AIAA</h2>
-      <hr>
-      <h3>Role Overview</h3>
-      <ul>
-        <li>- Investigated how temperature and reactant gas purity (electrolyzed H₂/O₂ vs. ambient air O₂) impact the energy conversion efficiency of PEM fuel cells.</li>
-        <li>- Designed and conducted 60+ independent trials, measuring voltage, current, temperature, and gas consumption data under varied operating conditions.</li>
-        <li>- Analyzed results using linear regression, significance tests, and two-sample t-tests to confirm efficiency gains at higher temperatures and with high-purity reactants.</li>
-        <li>- Employed strict lab safety protocols and iterative improvements to enhance data precision, reducing experimental error in real-time measurements.</li>
-        <li>- Formulated recommendations for next-generation PEM fuel cell design and optimization in clean energy applications.</li>
-      </ul>
-
-      <h3>Key Skills &amp; Accomplishments</h3>
-      <ul>
-        <li><strong>Experimental Design &amp; Data Collection:</strong> Developed robust procedures to measure and compare power output, thermal release, and reactant usage.</li>
-        <li><strong>Statistical Modeling:</strong> Applied regression analysis, hypothesis testing, and ANOVA to interpret efficiency trends and validate hypotheses.</li>
-        <li><strong>Technical Proficiency:</strong> Set up complex circuits with ammeters, voltmeters, variable resistors, and custom electronics for real-time monitoring.</li>
-        <li><strong>Process Optimization:</strong> Identified sources of experimental error (internal resistance, instrumentation limits) and proposed solutions to improve accuracy.</li>
-        <li><strong>Research Communication:</strong> Documented findings in detailed reports, complete with references to relevant literature and graphical data insights.</li>
-      </ul>
+        <h3>Role Overview</h3>
+        <ul>
+          <li>- Investigated how temperature and reactant gas purity (electrolyzed H₂/O₂ vs. ambient air O₂) impact the energy conversion efficiency of PEM fuel cells.</li>
+          <li>- Designed and conducted 60+ independent trials, measuring voltage, current, temperature, and gas consumption data under varied operating conditions.</li>
+          <li>- Analyzed results using linear regression, significance tests, and two-sample t-tests to confirm efficiency gains at higher temperatures and with high-purity reactants.</li>
+          <li>- Employed strict lab safety protocols and iterative improvements to enhance data precision, reducing experimental error in real-time measurements.</li>
+          <li>- Formulated recommendations for next-generation PEM fuel cell design and optimization in clean energy applications.</li>
+        </ul>
+  
+        <h3>Key Skills &amp; Accomplishments</h3>
+        <ul>
+          <li><strong>Experimental Design &amp; Data Collection:</strong> Developed robust procedures to measure and compare power output, thermal release, and reactant usage.</li>
+          <li><strong>Statistical Modeling:</strong> Applied regression analysis, hypothesis testing, and ANOVA to interpret efficiency trends and validate hypotheses.</li>
+          <li><strong>Technical Proficiency:</strong> Set up complex circuits with ammeters, voltmeters, variable resistors, and custom electronics for real-time monitoring.</li>
+          <li><strong>Process Optimization:</strong> Identified sources of experimental error (internal resistance, instrumentation limits) and proposed solutions to improve accuracy.</li>
+          <li><strong>Research Communication:</strong> Documented findings in detailed reports, complete with references to relevant literature and graphical data insights.</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Yuechuan (Canyon) Li. All Rights Reserved.</p>
+    </footer>
+  
+  
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Yuechuan (Canyon) Li. All Rights Reserved.</p>
-  </footer>
-
-  <!-- 脚本：轮播 + body淡入 & Modal控制 -->
+  
+  <!-- ========== 脚本：轮播 + body淡入 & Modal控制 ========== -->
   <script defer>
     // 轮播逻辑
     document.addEventListener("DOMContentLoaded", function() {
@@ -854,14 +850,14 @@
   </script>
 
   <script>
-    // Modal显示与隐藏控制
+    // Modal 显示与隐藏控制
     document.addEventListener("DOMContentLoaded", () => {
       const overlay = document.getElementById("overlay");
       const modalList = document.querySelectorAll(".modal");
       const seeMoreBtns = document.querySelectorAll(".see-more-btn");
       const closeModalBtns = document.querySelectorAll(".close-modal");
 
-      // 点击 “See more” 时，显示对应modal
+      // 点击“See more”时，显示对应 modal
       seeMoreBtns.forEach(btn => {
         btn.addEventListener("click", () => {
           const modalId = btn.getAttribute("data-modal");
@@ -869,20 +865,18 @@
 
           // 显示 overlay
           overlay.classList.remove("hidden");
-
           // 显示 modal
           targetModal.classList.remove("hidden");
           targetModal.classList.add("show");
         });
       });
 
-      // 点击 “×” 或 Overlay 时，关闭所有Modal
+      // 点击“×”或 Overlay 时，关闭所有Modal
       closeModalBtns.forEach(closeBtn => {
         closeBtn.addEventListener("click", () => {
           closeAllModals();
         });
       });
-
       overlay.addEventListener("click", () => {
         closeAllModals();
       });
