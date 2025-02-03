@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- 移动端视口设置：这句非常重要 -->
+  <!-- 移动端视口设置 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <meta name="description" content="I am Yuechuan (Canyon) Li, a curious high school senior with a passion for AI-driven education and clean energy research. Connect with me to explore new frontiers in tech and STEM education."/>
   <meta property="og:title" content="Yuechuan (Canyon) Li - AI Entrepreneur"/>
   <meta property="og:description" content="AI Entrepreneur, STEM Education Innovator, Future Stanford Student"/>
@@ -25,17 +24,15 @@
   <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
   
   <style>
-    /* 
-      ========== 全局样式 & CSS变量 ==========
-    */
+    /* ========== 全局样式 & CSS变量 ========== */
     :root {
       --color-bg-main: #1F2937;         /* 深色背景 */
-      --color-text-main: #F8F9FA;       /* 浅色文字 */
-      --color-accent: #E9C46A;          /* 金色点缀 */
-      --color-navbar-bg: #2E3A46;       /* 导航栏背景(比主体深色略浅一点) */
-      --color-section-bg: #0D1B2A;      /* hero区背景渐变第一层 */
-      --color-section-bg2: #1B263B;     /* hero区背景渐变第二层 */
-      --color-h2: #FFFFCC;              /* 浅黄色(可保留或根据需要调整) */
+      --color-text-main: #F8F9FA;         /* 浅色文字 */
+      --color-accent: #E9C46A;            /* 金色点缀 */
+      --color-navbar-bg: #2E3A46;         /* 导航栏背景(比主体深色略浅一点) */
+      --color-section-bg: #0D1B2A;        /* hero区背景渐变第一层 */
+      --color-section-bg2: #1B263B;       /* hero区背景渐变第二层 */
+      --color-h2: #FFFFCC;               /* 浅黄色 */
 
       --font-title: 'Montserrat', sans-serif;
       --font-base: 'Poppins', sans-serif;
@@ -65,12 +62,19 @@
       background: radial-gradient(circle at 50% 50%, rgba(233,196,106,0.1) 0%, transparent 60%);
     }
 
+    /* ========== 页面淡入效果 ========== */
     body {
       font-family: var(--font-base);
       color: var(--color-text-main);
-      overflow-x: hidden; 
-      opacity: 0; /* 初始透明度为0 */
-      transition: opacity 2s ease-in-out; /* 添加渐变过渡 */
+      overflow-x: hidden;
+
+      /* 初始状态设为透明，并添加过渡效果 */
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    /* 当添加 .fade-in 类后，页面淡入显示 */
+    body.fade-in {
+      opacity: 1;
     }
 
     a {
@@ -136,12 +140,12 @@
       transition: background 0.3s ease;
     }
     .cta-btn:hover {
-      background: #f3d484; /* hover时稍微变亮 */
+      background: #f3d484;
     }
 
     /* ========== 公共版块样式 ========== */
     section {
-      padding: 100px 20px; 
+      padding: 100px 20px;
       position: relative;
       max-width: 1200px;
       margin: 0 auto;
@@ -182,7 +186,7 @@
     .about-right {
       grid-column: 7 / 13;
       display: flex;
-      flex-direction: column; 
+      flex-direction: column;
       align-items: center;
       justify-content: flex-start;
     }
@@ -333,7 +337,7 @@
       line-height: 1.6;
     }
 
-    /* ========== Contact表单基础样式(后续会居中) ========== */
+    /* ========== Contact表单 ========== */
     .contact-form {
       max-width: 600px;
       margin: 40px auto 0 auto;
@@ -349,7 +353,7 @@
       font-size: 1rem;
     }
     .contact-form textarea {
-      resize: vertical; 
+      resize: vertical;
       height: 120px;
     }
     .contact-form button {
@@ -432,36 +436,48 @@
       color: #666;
     }
 
-    /* 
-      ========== 响应式: 在小屏幕下让右侧轮播移动到上方 ==========
-    */
-    @media (max-width: 768px) {
-      #about .about-container {
-        grid-template-columns: 1fr; 
-        row-gap: 30px;
-      }
-
-      .about-right {
-        order: -1;
-        grid-column: 1 / 2;
-      }
-      .about-left {
-        order: 0;
-        grid-column: 1 / 2;
-      }
-
-      .carousel {
-        width: 80%;
-        height: auto;
-        margin: 0 auto;
-      }
-      .carousel img {
-        width: 100%;
-        height: auto;
-      }
+    /* ========== ePortfolio 样式 ========== */
+    .sep-section {
+      padding: 80px 20px;
+      margin: 0 auto;
     }
-
-    /* 新增下载按钮等微调 */
+    .content-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .sep-section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      text-align: left;
+      color: var(--color-h2);
+      position: relative;
+    }
+    .sep-subtitle {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--color-accent);
+    }
+    .sep-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .sep-block {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    .sep-table-of-contents {
+      margin-bottom: 40px;
+      text-align: left;
+    }
+    
+    /* 恢复 Download 按钮样式 */
     .download {
       display: inline-block;
       padding: 8px 12px;
@@ -475,80 +491,29 @@
     .download:hover {
       background: #f3d484;
     }
-
-    /*
-      ========== 下面是针对 ePortfolio 的样式改进示例 ==========
-      如果想让 ePortfolio 完全独立，可把它们单独拆分到你的CSS文件
-    */
-
-    /* ePortfolio整体区块 */
-    .sep-section {
-      padding: 80px 20px;
-      margin: 0 auto;
+    
+    /* ========== Closer Scope 照片区域 ========== */
+    .photo-list {
+      display: block;
+      margin-top: 20px;
     }
-
-    /* 容器：让文字左对齐，宽度限制在较舒适的阅读范围 */
-    .content-container {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
+    .photo-item {
+      margin-bottom: 20px;
     }
-
-    /* 大标题，例如 (i) Introduction 等 */
-    .sep-section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-top: 0; /* 可根据需要调整 */
-      margin-bottom: 1.5rem;
-      text-align: left;
-      color: var(--color-h2);
-      position: relative;
+    .photo-item img {
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
     }
-
-    /* 小标题，如 Dedication、Welcome Letter 等 */
-    .sep-subtitle {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      color: var(--color-accent);
-    }
-
-    /* 正文段落 */
-    .sep-text {
+    .photo-description {
       font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
-
-    /* 卡片式分块 */
-    .sep-block {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 6px;
-      padding: 20px;
-      margin-bottom: 40px;
-    }
-
-    /* 目录样式 */
-    .sep-table-of-contents {
-      margin-bottom: 40px;
-      text-align: left; /* 如果想左对齐 */
-    }
-    .sep-table-of-contents ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 10px;
-    }
-    .sep-table-of-contents li {
-      margin-bottom: 5px;
-    }
-    .sep-table-of-contents a {
-      color: var(--color-accent);
-      text-decoration: underline;
+      color: var(--color-text-main);
+      text-align: left;
+      margin: 0;
     }
   </style>
 </head>
 <body>
-
   <!-- ========== Hero区 ========== -->
   <header class="hero">
     <div class="container">
@@ -564,7 +529,6 @@
       <li><a href="#about">About Me</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#achievements">Achievements</a></li>
-      <!-- ePortfolio 导航入口 -->
       <li><a href="#eportfolio">ePortfolio</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -688,21 +652,36 @@
     <!-- ===================== ePortfolio Section ===================== -->
     <section id="eportfolio" class="sep-section">
       <div class="content-container">
-        
-        <!-- ======= 目录 ======= -->
-        <nav class="sep-table-of-contents">
-          <h3 class="sep-subtitle">Table of Contents</h3>
-          <ul>
-            <li><a href="#sep-intro">(i) Introduction</a></li>
-            <li><a href="#sep-research">(ii) Research</a></li>
-            <li><a href="#sep-closerscope">(iii) Closer Scope to my Project</a></li>
-            <li><a href="#sep-professional">(iv) Professional &amp; Accomplishment</a></li>
+        <!-- ======= 大标题 (居中+加大) ======= -->
+        <h2 class="sep-section-title" style="text-align: center; font-size: 2.2rem; margin-bottom: 1rem;">
+          Senior Exit Project ePortfolio
+        </h2>
+
+        <!-- ======= 目录：放大并居中 ======= -->
+        <nav class="sep-table-of-contents" style="text-align: center; font-size: 1.2rem; margin-top: 20px;">
+          <h3 class="sep-subtitle" style="text-align: center; font-size: 1.5rem; margin-bottom: 0.8rem;">
+            Table of Contents
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 5px;">
+              <a href="#sep-intro" style="color: var(--color-accent); text-decoration: underline;">Introduction</a>
+            </li>
+            <li style="margin-bottom: 5px;">
+              <a href="#sep-research" style="color: var(--color-accent); text-decoration: underline;">Research</a>
+            </li>
+            <li style="margin-bottom: 5px;">
+              <a href="#sep-closerscope" style="color: var(--color-accent); text-decoration: underline;">Closer Scope to my Project</a>
+            </li>
+            <li style="margin-bottom: 5px;">
+              <a href="#sep-professional" style="color: var(--color-accent); text-decoration: underline;">Professional &amp; Accomplishment</a>
+            </li>
           </ul>
         </nav>
 
-        <!-- ===== (i) Introduction ===== -->
-        <h2 class="sep-section-title" id="sep-intro">(i) Introduction</h2>
-
+        <!-- ===== Introduction ===== -->
+        <h2 class="sep-section-title" id="sep-intro" style="text-align: center; margin-top: 60px;">
+          Introduction
+        </h2>
         <!-- Dedication -->
         <article class="sep-block">
           <h3 class="sep-subtitle">Dedication</h3>
@@ -719,17 +698,17 @@
             Welcome to Tech Insight Studio, an initiative to revolutionize educational accessibility through AI-driven tools and structured learning resources. This project was born out of a need to provide high-quality, affordable study materials, particularly for students navigating AP STEM courses. <br><br>
 
             Over the past several months, Tech Insight Studio has transformed from an initial concept into a fully developed platform integrating AI automation, interactive content, and an evolving library of resources. Through networking, project management, and collaborative teamwork, I have gained significant experience in curating educational materials, leading technological development, and leveraging AI for personalized learning. <br><br>
-
-            One of the primary challenges throughout this project was balancing content quality with efficiency. As our team expanded learning materials, it became evident that scalability was essential for long-term impact. Menti, our AI-powered Learning Companion, was developed to bridge this gap by providing real-time student support and ensuring adaptive and tailored learning experiences. Integrating AI into an educational setting has reinforced the importance of innovation, continuous refinement, and strategic problem-solving.<br><br>
-
+            
+            One of the primary challenges throughout this project was balancing content quality with efficiency. As our team expanded learning materials, it became evident that scalability was essential for long-term impact. Menti, our AI-powered Learning Companion, was developed to bridge this gap by providing real-time student support and ensuring adaptive and tailored learning experiences. Integrating AI into an educational setting has reinforced the importance of innovation, continuous refinement, and strategic problem-solving. <br><br>
+            
             Looking ahead, Tech Insight Studio aims to expand Menti’s capabilities further, incorporate additional AP STEM subjects, and collaborate with schools and institutions to extend the reach of our educational resources. The potential of AI in education is vast, and this project serves as a testament to how technology can bridge learning gaps and provide students with structured, accessible tools for academic success. <br><br>
-
-            I appreciate your taking the time to review this project and look forward to discussing its impact further. I appreciate your consideration. 
+            
+            I appreciate your taking the time to review this project and look forward to discussing its impact further. I appreciate your consideration. <br><br>
+            
             <br><br>
-            Best regard, <br>
+            Best regard,<br>
             Yuechuan (Canyon) Li
           </p>
-
           <p class="sep-text">
             <strong>Letter of Intent:</strong> 
             <a href="letter_of_intent.pdf" class="download" target="_blank">Download</a>
@@ -740,59 +719,100 @@
           </p>
         </article>
 
-        <!-- ===== (ii) Research ===== -->
-        <h2 class="sep-section-title" id="sep-research">(ii) Research</h2>
+        <!-- ===== Research ===== -->
+        <h2 class="sep-section-title" id="sep-research" style="text-align: center; margin-top: 60px;">
+          Research
+        </h2>
         <article class="sep-block">
           <h3 class="sep-subtitle">Research Overview</h3>
           <p class="sep-text">
             Artificial Intelligence (AI) is rapidly transforming education, offering scalable and adaptive learning solutions that cater to individual student needs. This research paper explores how AI-powered learning companions, specifically the Menti project by Tech Insight Studio, can revolutionize education by enhancing accessibility, affordability, and personalization. In this paper, I examine the integration of machine learning, natural language processing (NLP), and data analytics into AI-driven education systems. <br><br>
-            By analyzing Menti's design, its ability to tailor learning experiences, and its potential to reduce the reliance on traditional tutoring, this study highlights how AI can bridge learning gaps. Additionally, the paper addresses the technical, ethical, and policy challenges surrounding AI in education, including data privacy and algorithmic biases. Ultimately, this research provides insights into how AI can support student-centered learning and create a more inclusive and cost-effective educational ecosystem for the future.
-            <!-- ...剩余Research内容同原文... -->
+
+            By analyzing Menti's design, its ability to tailor learning experiences, and its potential to reduce the reliance on traditional tutoring, this study highlights how AI can bridge learning gaps. Additionally, the paper addresses the technical, ethical, and policy challenges surrounding AI in education, including data privacy and algorithmic biases. Ultimately, this research provides insights into how AI can support student-centered learning and create a more inclusive and cost-effective educational ecosystem for the future. <br><br>
           </p>
           <p class="sep-text">
             <a href="research_paper.pdf" class="download" target="_blank">Download Research Paper</a>
           </p>
         </article>
 
-        <!-- ===== (iii) Closer Scope to my Project ===== -->
-        <h2 class="sep-section-title" id="sep-closerscope">(iii) Closer Scope to my Project</h2>
+        <!-- ===== Closer Scope to my Project ===== -->
+        <h2 class="sep-section-title" id="sep-closerscope" style="text-align: center; margin-top: 60px;">
+          Closer Scope to my Project
+        </h2>
         <article class="sep-block">
           <h3 class="sep-subtitle">Mentor Verification &amp; Introduction</h3>
           <p class="sep-text">
-            I am incredibly grateful to my mentor, <strong style="color: var(--color-accent);">Stan Xiang</strong>, an experienced AP Calculus, Statistics, and Physics instructor based in Shanghai. Since our initial connection in November 2022, Stan has played a pivotal role in my academic journey, mentoring me through multiple AP STEM courses and providing invaluable guidance for my physics competition preparations. <br><br>
+            I am incredibly grateful to my mentor, <strong style="color: var(--color-accent);">Stan Xiang</strong> an experienced AP Calculus, Statistics, and Physics instructor based in Shanghai. Since our initial connection in November 2022, Stan has played a pivotal role in my academic journey, mentoring me through multiple AP STEM courses and providing invaluable guidance for my physics competition preparations. <br><br>
 
             Throughout my Senior Exit Project (SEP), I have maintained regular communication and collaboration with Stan, developing numerous educational resources for the AP Calculus community. His mentorship has been instrumental in refining content, structuring instructional materials, and ensuring the highest level of accuracy in our learning tools. Beyond this, Stan has also been a critical technical resource, offering insights into HTML and Python programming that directly contributed to the development of Menti, the AI Learning Companion. <br><br>
             
             I sincerely appreciate Stan’s ongoing support, both in educational content creation and AI software development, as his guidance has significantly enhanced the impact of this project. His dedication to expanding free learning resources through platforms like Bilibili, Red Note, and the Desmos community continues to inspire my work and fuels the mission of Tech Insight Studio. <br><br>
-            <!-- ...保持原文... -->
           </p>
           <p class="sep-text">
-            <strong>Mentor Verification Letter:</strong> 
+            <strong>Mentor Verification Letter:</strong>
             <a href="mentor_verification.pdf" class="download" target="_blank">Download</a>
           </p>
           <p class="sep-text">
-            <strong>Project Log (24+ hours of documented work):</strong> 
+            <strong>Project Log (24+ hours of documented work):</strong>
             <a href="project_log.pdf" class="download" target="_blank">Download</a>
           </p>
           <p class="sep-text">
-            <strong>Journal Entries:</strong> 
+            <strong>Journal Entries:</strong>
             <a href="journal_entries.pdf" class="download" target="_blank">Download</a>
           </p>
+          <!-- 新的照片区域：每行一张图片，下方附带描述（目前以 (...) 占位） -->
+          <div class="photo-list">
+            <div class="photo-item">
+              <img src="project_photo1.webp" alt="Project Photo 1">
+              <p class="photo-description">(Developing additional AP Calculus and AP Physics learning materials with Johnson Chen.) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo2.webp" alt="Project Photo 2">
+              <p class="photo-description">(Evaluating our most advanced AI model for content generation.) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo3.webp" alt="Project Photo 3">
+              <p class="photo-description">(Having a virtual meeting with my mentor, Stan Xiang, to enhance the development of an advanced AP Calculus virtual model for CH 11.3 Polar Area.) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo4.webp" alt="Project Photo 4">
+              <p class="photo-description">(Building our studio's website with HTML as the base, CSS for structure, and JavaScript for functionality.) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo5.webp" alt="Project Photo 5">
+              <p class="photo-description">(A sample of the curriculum materials we have developed.) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo6.webp" alt="Project Photo 6">
+              <p class="photo-description">(A demonstration of the AP Calculus virtual model.) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo7.webp" alt="Project Photo 7">
+              <p class="photo-description">(Me working on the creation of a new mathematical virtual model.) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo8.webp" alt="Project Photo 8">
+              <p class="photo-description">(Me working on debugging for our most advanced AI model Menti) </p>
+            </div>
+            <div class="photo-item">
+              <img src="project_photo9.webp" alt="Project Photo 9">
+              <p class="photo-description">(Screeshot of Tech Insight Studio's website.) </p>
+            </div>
+          </div>
         </article>
 
-        <!-- ===== (iv) Professional & Accomplishment ===== -->
-        <h2 class="sep-section-title" id="sep-professional">(iv) Professional &amp; Accomplishment</h2>
+        <!-- ===== Professional & Accomplishment ===== -->
+        <h2 class="sep-section-title" id="sep-professional" style="text-align: center; margin-top: 60px;">
+          Professional &amp; Accomplishment
+        </h2>
         <article class="sep-block">
           <p class="sep-text">
-            As I transition to my next incredible journey at Stanford University, the experiences and lessons from this project will continue to shape my technical skills, as well as my mindset and aspirations. Through Tech Insight Studio, I have developed an entrepreneurial and solution-oriented mindset—learning to navigate challenges, embrace innovation, and lead collaborative initiatives. The skills I have refined in AI development, educational technology, and project management will be fundamental as I contribute to future technological advancements. <br><br>
+            As I transition to my next incredible journey at Stanford University, the experiences and lessons from this project will continue to shape my technical skills, as well as my mindset and aspirations. Through Tech Insight Studio, I have developed an entrepreneurial and solution-oriented mindset—learning to navigate challenges, embrace innovation, and lead collaborative initiatives. The skills I have refined in AI development, educational technology, and project management will be fundamental as I contribute to future technological advancements.<br><br>
 
-            More than just technical skills, this project has matured my perspective on impact-driven innovation. It has taught me that technology’s most significant power lies in its ability to create meaningful change—not just through efficiency but through accessibility and equity. As an Arizona Cardinals Time Change Agent, my goal extends beyond academic excellence; I aim to leverage technology to create scalable, high-quality learning solutions for underserved communities. My work with Menti, AI automation, and digital education has been a stepping stone toward a broader vision: harnessing AI to democratize knowledge and empower learners worldwide.<br><br>
+            More than just technical skills, this project has matured my perspective on impact-driven innovation. It has taught me that technology’s most significant power lies in its ability to create meaningful change—not just through efficiency but through accessibility and equity. As an Arizona Cardinals Time Change Agent, my goal extends beyond academic excellence; I aim to leverage technology to create scalable, high-quality learning solutions for underserved communities. My work with Menti, AI automation, and digital education has been a stepping stone toward a broader vision: harnessing AI to democratize knowledge and empower learners worldwide. <br><br>
 
-            Stanford will be the next chapter in this journey, where I will continue pushing the boundaries of AI in education, policy-making, and global outreach. My mission is clear: mindset to be a catalyst for positive change, using my skills and experiences to redefine learning accessibility and inspire innovation. This project was only the beginning—there is much more to come.<br><br>
-
-            <!-- 保持原始段落 -->
+            Stanford will be the next chapter in this journey, where I will continue pushing the boundaries of AI in education, policy-making, and global outreach. My mission is clear: mindset to be a catalyst for positive change, using my skills and experiences to redefine learning accessibility and inspire innovation. This project was only the beginning—there is much more to come. <br><br>
           </p>
-
           <p class="sep-text">
             <strong>Resume (SEP Focus):</strong>
             <a href="resume.pdf" class="download" target="_blank">Download</a>
@@ -806,12 +826,11 @@
             <a href="certificates.pdf" class="download" target="_blank">Download</a>
           </p>
         </article>
-
       </div><!-- /content-container -->
     </section>
     <!-- ===================== ePortfolio Section 结束 ===================== -->
 
-    <!-- Contact Section（居中） -->
+    <!-- Contact Section -->
     <section id="contact" style="text-align: center;">
       <h2>Contact</h2>
       <p>Feel free to reach out to me!</p>
@@ -824,29 +843,19 @@
         </li>
         <li>
           LinkedIn: 
-          <a 
-            href="https://www.linkedin.com/in/yuechuan-li-403000320/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            style="color: var(--color-accent); text-decoration: underline;"
-          >
+          <a href="https://www.linkedin.com/in/yuechuan-li-403000320/" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: underline;">
             https://www.linkedin.com/in/yuechuan-li-403000320/
           </a>
         </li>
         <li>
           Website: 
-          <a 
-            href="https://techinsightstudio.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            style="color: var(--color-accent); text-decoration: underline;"
-          >
+          <a href="https://techinsightstudio.com" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: underline;">
             https://techinsightstudio.com
           </a>
         </li>
       </ul>
 
-      <!-- 表单也在中间 -->
+      <!-- Contact 表单 -->
       <form class="contact-form" action="#" method="POST" style="margin: 0 auto; text-align: left;">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
@@ -860,76 +869,184 @@
   <div id="overlay" class="overlay hidden"></div>
 
   <!-- Modal 1: KEQI (Tech Insight Studio) -->
-  <div id="modal-keqi" class="modal hidden">
-    <div class="modal-content" style="position: relative; padding-top: 20px;">
-      <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
-      <div style="text-align: center; margin: 20px 0;">
-        <img src="KEQI.webp" alt="KEQI Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
-      </div>
-      <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
-        Founder &amp; Director<br>@Tech Insight Studio
-      </h2>
-      <hr>
-      <h3>Role Overview</h3>
-      <ul>
-        <li>- Spearheaded the establishment and growth of Tech Insight Studio...</li>
-        <!-- 省略 其余信息与原相同 -->
-      </ul>
-      <h3>Key Skills &amp; Accomplishments</h3>
-      <ul>
-        <li><strong>Educational Strategy:</strong> Directed the creation of six comprehensive AP STEM courses...</li>
-        <!-- 省略 其余信息与原相同 -->
-      </ul>
-      <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2024 Tech Insight Studio. All rights reserved.</p>
+  
+<div id="modal-keqi" class="modal hidden">
+  <div class="modal-content" style="position: relative; padding-top: 20px;">
+    <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+    <div style="text-align: center; margin: 20px 0;">
+      <!-- 请确保 KEQI.PNG 文件已上传到正确目录 -->
+      <img src="KEQI.WEBP" alt="KEQI Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
     </div>
+    <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
+      Founder &amp; Director<br>@Tech Insight Studio
+    </h2>
+    
+    <h3>Role Overview</h3>
+    <ul style="line-height: 1.6;">
+      <li>Spearheaded the establishment and growth of Tech Insight Studio, an online education platform dedicated to transforming learning through innovative AP STEM courses.</li>
+      <li>Led a cross-functional team of five talented high school students, fostering collaboration across educational content creation, platform development, marketing, and user engagement.</li>
+      <li>Oversaw the development and execution of personalized AP STEM courses, including AP Precalculus, AP Physics, and AP Chemistry, ensuring content aligns with College Board standards and meets the needs of diverse learners.</li>
+      <li>Drove the studio’s mission to provide accessible, high-quality educational resources by leveraging technology and student-driven innovation.</li>
+      <li>Designed the strategic roadmap for course development, instructional methods, and user engagement initiatives to enhance student outcomes and grow the platform.</li>
+      <li>Collaborated with team members to integrate interactive learning tools and gather feedback for continuous improvement.</li>
+    </ul>
+    
+    <h3>Key Skills &amp; Accomplishments</h3>
+    <ul style="line-height: 1.6;">
+      <li><strong>Educational Strategy:</strong> Directed the creation of six comprehensive AP STEM courses, integrating interactive content and advanced learning techniques.</li>
+      <li><strong>Leadership &amp; Team Management:</strong> Fostered a results-oriented, collaborative environment that enhanced team efficiency and innovation.</li>
+      <li><strong>Tech Integration:</strong> Guided the technical development of the studio's website and online platform to enhance user experience and accessibility.</li>
+      <li><strong>Market Impact:</strong> Developed and executed a successful marketing strategy that increased platform visibility and student enrollment.</li>
+      <li><strong>Continuous Improvement:</strong> Established a feedback system to gather student insights, optimizing courses and platform usability.</li>
+    </ul>
+    
+    <p style="margin-top: 20px; font-size: 0.9rem; text-align: center;">&copy; 2024 Tech Insight Studio. All rights reserved.</p>
   </div>
+</div>
+
 
   <!-- Modal 2: Desmos Studio -->
-  <div id="modal-desmos" class="modal hidden">
-    <div class="modal-content">
-      <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
-      <div style="text-align: center; margin: 20px 0;">
-        <img src="DESMOS.webp" alt="DESMOS Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
-      </div>
-      <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
-        Independent Developer<br>@Desmos Studio
-      </h2>
-      <p>
-        This project showcases the integration of mathematical modeling, real-world applications...
-      </p>
-      <!-- 省略其余描述 -->
+<div id="modal-desmos" class="modal hidden">
+  <div class="modal-content" style="position: relative; padding-top: 20px;">
+    <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+    <div style="text-align: center; margin: 20px 0;">
+      <!-- 请确认 DESMOS.PNG 文件已上传到相应目录 -->
+      <img src="DESMOS.WEBP" alt="DESMOS Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
     </div>
+    <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
+      Independent Developer<br>@Desmos Studio
+    </h2>
+    <p>
+      This project showcases the integration of mathematical modeling, real-world applications, and educational tools using the power of Desmos. Each virtual model highlights the relevance of mathematics, physics, and chemistry through dynamic visualizations and computational solutions. Below is an organized and comprehensive summary of the project's components:
+    </p>
+
+    <!-- Real-World Applications -->
+    <h3>Real-World Applications</h3>
+    <h4>EV Future Market Share</h4>
+    <p>
+      <strong>Description:</strong> Uses Python and machine learning to perform statistical analysis and data regression, predicting the market share of electric vehicles through 2035.
+    </p>
+    <p>
+      <strong>Relevance:</strong> Highlights the intersection of data science, sustainability, and market dynamics.
+    </p>
+    <p>
+      <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">EV Future Market Share Model</a>
+    </p>
+
+    <h4>Cycloid Graph for Brachistochrone</h4>
+    <p>
+      <strong>Description:</strong> Visualizes and explains one of the most classic and time-consuming problems in the history of mathematics and physics: the Brachistochrone curve.
+    </p>
+    <p>
+      <strong>Relevance:</strong> Demonstrates the elegance of cycloidal curves in solving real-world problems of minimal time travel under gravity.
+    </p>
+    <p>
+      <strong>Links:</strong>
+      <a href="#" style="color: var(--color-accent); text-decoration: underline;">Cycloid Visualization 1</a>,
+      <a href="#" style="color: var(--color-accent); text-decoration: underline;">Cycloid Visualization 2</a>
+    </p>
+
+    <h4>Chemistry Calculator</h4>
+    <p>
+      <strong>Description:</strong> Effortlessly balances chemical equations, calculates molar ratios, and determines limiting reactants in multi-step reactions.
+    </p>
+    <p>
+      <strong>Relevance:</strong> Bridges the gap between abstract chemistry concepts and computational precision for practical applications.
+    </p>
+    <p>
+      <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Chemistry Calculator</a>
+    </p>
+
+    <!-- AP Calculus Theorem Virtual Models -->
+    <h3>AP Calculus Theorem Virtual Models</h3>
+    <ul style="line-height: 1.6;">
+      <li>
+        <strong>The Squeeze Theorem</strong><br>
+        <em>Concept:</em> Visualizes sin&theta;/&theta; limit behavior as &theta; approaches 0.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">The Squeeze Theorem</a>
+      </li>
+      <li>
+        <strong>Tangent Line Approximation</strong><br>
+        <em>Concept:</em> Demonstrates linear approximation of curves using tangents.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Tangent Line Approximation</a>
+      </li>
+      <li>
+        <strong>Area of a Region Between Two Curves</strong><br>
+        <em>Concept:</em> Calculates and visualizes the area enclosed by two curves.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Area Between Two Curves</a>
+      </li>
+      <li>
+        <strong>Volume: The Disk &amp; Washer Method</strong><br>
+        <em>Concept:</em> Explains volumetric calculations using the disk and washer method for rotational solids.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Disk &amp; Washer Method</a>
+      </li>
+      <li>
+        <strong>Volume: The Shell Method</strong><br>
+        <em>Concept:</em> Illustrates volume calculation using cylindrical shells.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Shell Method</a>
+      </li>
+      <li>
+        <strong>Derivatives, Arc Length, Surface Areas for Parametric Equations</strong><br>
+        <em>Concept:</em> Explores derivatives, arc lengths, and surface areas derived from parametric equations.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Parametric Equations</a>
+      </li>
+      <li>
+        <strong>Parametric Equations Powerful Techniques</strong><br>
+        <em>Concept:</em> Showcases advanced modeling techniques for parametric equations.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Advanced Parametric Techniques</a>
+      </li>
+      <li>
+        <strong>nth Complex Roots (Polar)</strong><br>
+        <em>Concept:</em> Visualizes and computes nth roots of complex numbers using polar coordinates.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Complex Roots in Polar Form</a>
+      </li>
+      <li>
+        <strong>Taylor Polynomial for f(x)=sin(x)</strong><br>
+        <em>Concept:</em> Expands sin(x) using Taylor series and visualizes convergence.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Taylor Polynomial</a>
+      </li>
+    </ul>
+
+    <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2024 Desmos Studio. All rights reserved.</p>
   </div>
+</div>
+
 
   <!-- Modal 3: PEM Fuel Cell Research -->
-  <div id="modal-fuelcell" class="modal hidden">
-    <div class="modal-content">
-      <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
-      <div style="text-align: center; margin: 20px 0;">
-        <img src="SARSEF.webp" alt="SARSEF Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
-      </div>
-      <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
-        PEM Fuel Cell Researcher<br>@2024 SARSEF &amp; @2024 AIAA
-      </h2>
-      <h3>Role Overview</h3>
-      <ul>
-        <li>- Investigated how temperature and reactant gas purity impact PEM fuel cell efficiency.</li>
-        <!-- 省略其余信息与原相同 -->
-      </ul>
-      <h3>Key Skills &amp; Accomplishments</h3>
-      <ul>
-        <li><strong>Experimental Design &amp; Data Collection:</strong> Developed robust procedures...</li>
-        <!-- 省略其余信息与原相同 -->
-      </ul>
-    </div>
-  </div>
   
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Yuechuan (Canyon) Li. All Rights Reserved.</p>
-  </footer>
+<div id="modal-fuelcell" class="modal hidden">
+  <div class="modal-content" style="position: relative; padding-top: 20px;">
+    <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+    <div style="text-align: center; margin: 20px 0;">
+      <!-- 请确保 SERSEF.PNG 文件已上传到正确目录 -->
+      <img src="SARSEF.WEBP" alt="SARSEF Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
+    </div>
+    <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
+      PEM Fuel Cell Researcher<br>@2024 SARSEF &amp; @2024 AIAA
+    </h2>
+    
+    <h3>Role Overview</h3>
+    <ul style="line-height: 1.6;">
+      <li>Investigated how temperature and reactant gas purity (electrolyzed H₂/O₂ vs. ambient air O₂) impact the energy conversion efficiency of PEM fuel cells.</li>
+      <li>Designed and conducted 60+ independent trials, measuring voltage, current, temperature, and gas consumption data under varied operating conditions.</li>
+      <li>Analyzed results using linear regression, significance tests, and two-sample t-tests to confirm efficiency gains at higher temperatures and with high-purity reactants.</li>
+      <li>Employed strict lab safety protocols and iterative improvements to enhance data precision, reducing experimental error in real-time measurements.</li>
+      <li>Formulated recommendations for next-generation PEM fuel cell design and optimization in clean energy applications.</li>
+    </ul>
+    
+    <h3>Key Skills &amp; Accomplishments</h3>
+    <ul style="line-height: 1.6;">
+      <li><strong>Experimental Design &amp; Data Collection:</strong> Developed robust procedures to measure and compare power output, thermal release, and reactant usage.</li>
+      <li><strong>Statistical Modeling:</strong> Applied regression analysis, hypothesis testing, and ANOVA to interpret efficiency trends and validate hypotheses.</li>
+      <li><strong>Technical Proficiency:</strong> Set up complex circuits with ammeters, voltmeters, variable resistors, and custom electronics for real-time monitoring.</li>
+      <li><strong>Process Optimization:</strong> Identified sources of experimental error (internal resistance, instrumentation limits) and proposed solutions to improve accuracy.</li>
+      <li><strong>Research Communication:</strong> Documented findings in detailed reports, complete with references to relevant literature and graphical data insights.</li>
+    </ul>
+  </div>
+</div>
 
-  <!-- ========== 脚本：轮播 + body淡入 & Modal控制 ========== -->
+
+  <!-- ========== 脚本：轮播 + Modal控制 ========== -->
   <script defer>
     // 轮播逻辑
     document.addEventListener("DOMContentLoaded", function() {
@@ -973,11 +1090,6 @@
       // 自动轮播，每3秒切换
       setInterval(updateCarousel, 3000);
     });
-
-    // 页面资源全部加载后再将 body 渐显
-    window.addEventListener('load', function() {
-      document.body.style.opacity = '1';
-    });
   </script>
 
   <script>
@@ -988,7 +1100,7 @@
       const seeMoreBtns = document.querySelectorAll(".see-more-btn");
       const closeModalBtns = document.querySelectorAll(".close-modal");
 
-      // 点击“See more”时，显示对应 modal
+      // 点击“See more”时，显示对应的 modal
       seeMoreBtns.forEach(btn => {
         btn.addEventListener("click", () => {
           const modalId = btn.getAttribute("data-modal");
@@ -1002,7 +1114,7 @@
         });
       });
 
-      // 点击“×”或 Overlay 时，关闭所有Modal
+      // 点击“×”或 Overlay 时，关闭所有 Modal
       closeModalBtns.forEach(closeBtn => {
         closeBtn.addEventListener("click", () => {
           closeAllModals();
@@ -1019,6 +1131,13 @@
           modal.classList.remove("show");
         });
       }
+    });
+  </script>
+
+  <!-- ========== 页面淡入效果控制脚本 ========== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      document.body.classList.add("fade-in");
     });
   </script>
 </body>
