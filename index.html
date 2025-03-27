@@ -67,9 +67,12 @@
       font-family: var(--font-base);
       color: var(--color-text-main);
       overflow-x: hidden;
+
+      /* 初始状态设为透明，并添加过渡效果 */
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
     }
+    /* 当添加 .fade-in 类后，页面淡入显示 */
     body.fade-in {
       opacity: 1;
     }
@@ -79,13 +82,6 @@
       text-decoration: none;
     }
     ul { list-style: none; }
-
-    /* Container (for general layout) */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
 
     /* ========== 导航栏 ========== */
     .navbar {
@@ -205,26 +201,26 @@
       margin-bottom: 15px;
     }
 
-    /* 轮播容器 (Responsive version) */
+    /* 轮播容器 */
     .carousel {
-      width: 90%;
-      max-width: 550px;
+      width: 550px;
+      height: 500px;
       border: 2px solid var(--color-text-main);
       border-radius: 5px;
       position: relative;
       overflow: hidden;
-      margin: 0 auto;
     }
     .carousel-container {
       width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .carousel img {
       display: none;
-      width: 100%;
-      height: auto;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: cover;
       object-position: 50% 50%;
     }
@@ -515,21 +511,6 @@
       text-align: left;
       margin: 0;
     }
-
-    /* ========== Media Queries for smaller screens ========== */
-    @media (max-width: 768px) {
-      .about-container {
-        grid-template-columns: 1fr;
-      }
-      .about-right {
-        grid-column: 1 / -1;
-        margin-top: 20px;
-      }
-      .project-container {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
   </style>
 </head>
 <body>
@@ -643,7 +624,7 @@
         </div>
         <div class="achievement-card">
           <h4>2024 US Physics Team &amp; 54th IPhO</h4>
-          <p>Participation in the 54th US Physics Team and the 54th International Physics Olympiad.</p>
+          <p>Participation in the highly competitive US Physics Team and the 54th International Physics Olympiad.</p>
         </div>
         <div class="achievement-card">
           <h4>2024 USNCO Finalist</h4>
@@ -810,7 +791,7 @@
               <p class="photo-description">(Me working on the creation of a new mathematical virtual model.) </p>
             </div>
             <div class="photo-item">
-              <img src="project_photo8.webp" alt="Project Photo 8 ">
+              <img src="project_photo8.webp" alt="Project Photo 8">
               <p class="photo-description">(Me working on debugging for our most advanced AI model Menti) </p>
             </div>
             <div class="photo-item">
@@ -888,177 +869,182 @@
   <div id="overlay" class="overlay hidden"></div>
 
   <!-- Modal 1: KEQI (Tech Insight Studio) -->
-  <div id="modal-keqi" class="modal hidden">
-    <div class="modal-content" style="position: relative; padding-top: 20px;">
-      <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
-      <div style="text-align: center; margin: 20px 0;">
-        <!-- 请确保 KEQI.PNG 文件已上传到正确目录 -->
-        <img src="KEQI.WEBP" alt="KEQI Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
-      </div>
-      <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
-        Founder &amp; Director<br>@Tech Insight Studio
-      </h2>
-      
-      <h3>Role Overview</h3>
-      <ul style="line-height: 1.6;">
-        <li>Spearheaded the establishment and growth of Tech Insight Studio, an online education platform dedicated to transforming learning through innovative AP STEM courses.</li>
-        <li>Led a cross-functional team of five talented high school students, fostering collaboration across educational content creation, platform development, marketing, and user engagement.</li>
-        <li>Oversaw the development and execution of personalized AP STEM courses, including AP Precalculus, AP Physics, and AP Chemistry, ensuring content aligns with College Board standards and meets the needs of diverse learners.</li>
-        <li>Drove the studio’s mission to provide accessible, high-quality educational resources by leveraging technology and student-driven innovation.</li>
-        <li>Designed the strategic roadmap for course development, instructional methods, and user engagement initiatives to enhance student outcomes and grow the platform.</li>
-        <li>Collaborated with team members to integrate interactive learning tools and gather feedback for continuous improvement.</li>
-      </ul>
-      
-      <h3>Key Skills &amp; Accomplishments</h3>
-      <ul style="line-height: 1.6;">
-        <li><strong>Educational Strategy:</strong> Directed the creation of six comprehensive AP STEM courses, integrating interactive content and advanced learning techniques.</li>
-        <li><strong>Leadership &amp; Team Management:</strong> Fostered a results-oriented, collaborative environment that enhanced team efficiency and innovation.</li>
-        <li><strong>Tech Integration:</strong> Guided the technical development of the studio's website and online platform to enhance user experience and accessibility.</li>
-        <li><strong>Market Impact:</strong> Developed and executed a successful marketing strategy that increased platform visibility and student enrollment.</li>
-        <li><strong>Continuous Improvement:</strong> Established a feedback system to gather student insights, optimizing courses and platform usability.</li>
-      </ul>
-      
-      <p style="margin-top: 20px; font-size: 0.9rem; text-align: center;">&copy; 2024 Tech Insight Studio. All rights reserved.</p>
+  
+<div id="modal-keqi" class="modal hidden">
+  <div class="modal-content" style="position: relative; padding-top: 20px;">
+    <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+    <div style="text-align: center; margin: 20px 0;">
+      <!-- 请确保 KEQI.PNG 文件已上传到正确目录 -->
+      <img src="KEQI.WEBP" alt="KEQI Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
     </div>
+    <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
+      Founder &amp; Director<br>@Tech Insight Studio
+    </h2>
+    
+    <h3>Role Overview</h3>
+    <ul style="line-height: 1.6;">
+      <li>Spearheaded the establishment and growth of Tech Insight Studio, an online education platform dedicated to transforming learning through innovative AP STEM courses.</li>
+      <li>Led a cross-functional team of five talented high school students, fostering collaboration across educational content creation, platform development, marketing, and user engagement.</li>
+      <li>Oversaw the development and execution of personalized AP STEM courses, including AP Precalculus, AP Physics, and AP Chemistry, ensuring content aligns with College Board standards and meets the needs of diverse learners.</li>
+      <li>Drove the studio’s mission to provide accessible, high-quality educational resources by leveraging technology and student-driven innovation.</li>
+      <li>Designed the strategic roadmap for course development, instructional methods, and user engagement initiatives to enhance student outcomes and grow the platform.</li>
+      <li>Collaborated with team members to integrate interactive learning tools and gather feedback for continuous improvement.</li>
+    </ul>
+    
+    <h3>Key Skills &amp; Accomplishments</h3>
+    <ul style="line-height: 1.6;">
+      <li><strong>Educational Strategy:</strong> Directed the creation of six comprehensive AP STEM courses, integrating interactive content and advanced learning techniques.</li>
+      <li><strong>Leadership &amp; Team Management:</strong> Fostered a results-oriented, collaborative environment that enhanced team efficiency and innovation.</li>
+      <li><strong>Tech Integration:</strong> Guided the technical development of the studio's website and online platform to enhance user experience and accessibility.</li>
+      <li><strong>Market Impact:</strong> Developed and executed a successful marketing strategy that increased platform visibility and student enrollment.</li>
+      <li><strong>Continuous Improvement:</strong> Established a feedback system to gather student insights, optimizing courses and platform usability.</li>
+    </ul>
+    
+    <p style="margin-top: 20px; font-size: 0.9rem; text-align: center;">&copy; 2024 Tech Insight Studio. All rights reserved.</p>
   </div>
+</div>
+
 
   <!-- Modal 2: Desmos Studio -->
-  <div id="modal-desmos" class="modal hidden">
-    <div class="modal-content" style="position: relative; padding-top: 20px;">
-      <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
-      <div style="text-align: center; margin: 20px 0;">
-        <!-- 请确认 DESMOS.PNG 文件已上传到相应目录 -->
-        <img src="DESMOS.WEBP" alt="DESMOS Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
-      </div>
-      <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
-        Independent Developer<br>@Desmos Studio
-      </h2>
-      <p>
-        This project showcases the integration of mathematical modeling, real-world applications, and educational tools using the power of Desmos. Each virtual model highlights the relevance of mathematics, physics, and chemistry through dynamic visualizations and computational solutions. Below is an organized and comprehensive summary of the project's components:
-      </p>
-
-      <!-- Real-World Applications -->
-      <h3>Real-World Applications</h3>
-      <h4>EV Future Market Share</h4>
-      <p>
-        <strong>Description:</strong> Uses Python and machine learning to perform statistical analysis and data regression, predicting the market share of electric vehicles through 2035.
-      </p>
-      <p>
-        <strong>Relevance:</strong> Highlights the intersection of data science, sustainability, and market dynamics.
-      </p>
-      <p>
-        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">EV Future Market Share Model</a>
-      </p>
-
-      <h4>Cycloid Graph for Brachistochrone</h4>
-      <p>
-        <strong>Description:</strong> Visualizes and explains one of the most classic and time-consuming problems in the history of mathematics and physics: the Brachistochrone curve.
-      </p>
-      <p>
-        <strong>Relevance:</strong> Demonstrates the elegance of cycloidal curves in solving real-world problems of minimal time travel under gravity.
-      </p>
-      <p>
-        <strong>Links:</strong>
-        <a href="#" style="color: var(--color-accent); text-decoration: underline;">Cycloid Visualization 1</a>,
-        <a href="#" style="color: var(--color-accent); text-decoration: underline;">Cycloid Visualization 2</a>
-      </p>
-
-      <h4>Chemistry Calculator</h4>
-      <p>
-        <strong>Description:</strong> Effortlessly balances chemical equations, calculates molar ratios, and determines limiting reactants in multi-step reactions.
-      </p>
-      <p>
-        <strong>Relevance:</strong> Bridges the gap between abstract chemistry concepts and computational precision for practical applications.
-      </p>
-      <p>
-        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Chemistry Calculator</a>
-      </p>
-
-      <!-- AP Calculus Theorem Virtual Models -->
-      <h3>AP Calculus Theorem Virtual Models</h3>
-      <ul style="line-height: 1.6;">
-        <li>
-          <strong>The Squeeze Theorem</strong><br>
-          <em>Concept:</em> Visualizes sin&theta;/&theta; limit behavior as &theta; approaches 0.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">The Squeeze Theorem</a>
-        </li>
-        <li>
-          <strong>Tangent Line Approximation</strong><br>
-          <em>Concept:</em> Demonstrates linear approximation of curves using tangents.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Tangent Line Approximation</a>
-        </li>
-        <li>
-          <strong>Area of a Region Between Two Curves</strong><br>
-          <em>Concept:</em> Calculates and visualizes the area enclosed by two curves.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Area Between Two Curves</a>
-        </li>
-        <li>
-          <strong>Volume: The Disk &amp; Washer Method</strong><br>
-          <em>Concept:</em> Explains volumetric calculations using the disk and washer method for rotational solids.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Disk &amp; Washer Method</a>
-        </li>
-        <li>
-          <strong>Volume: The Shell Method</strong><br>
-          <em>Concept:</em> Illustrates volume calculation using cylindrical shells.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Shell Method</a>
-        </li>
-        <li>
-          <strong>Derivatives, Arc Length, Surface Areas for Parametric Equations</strong><br>
-          <em>Concept:</em> Explores derivatives, arc lengths, and surface areas derived from parametric equations.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Parametric Equations</a>
-        </li>
-        <li>
-          <strong>Parametric Equations Powerful Techniques</strong><br>
-          <em>Concept:</em> Showcases advanced modeling techniques for parametric equations.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Advanced Parametric Techniques</a>
-        </li>
-        <li>
-          <strong>nth Complex Roots (Polar)</strong><br>
-          <em>Concept:</em> Visualizes and computes nth roots of complex numbers using polar coordinates.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Complex Roots in Polar Form</a>
-        </li>
-        <li>
-          <strong>Taylor Polynomial for f(x)=sin(x)</strong><br>
-          <em>Concept:</em> Expands sin(x) using Taylor series and visualizes convergence.<br>
-          <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Taylor Polynomial</a>
-        </li>
-      </ul>
-
-      <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2024 Desmos Studio. All rights reserved.</p>
+<div id="modal-desmos" class="modal hidden">
+  <div class="modal-content" style="position: relative; padding-top: 20px;">
+    <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+    <div style="text-align: center; margin: 20px 0;">
+      <!-- 请确认 DESMOS.PNG 文件已上传到相应目录 -->
+      <img src="DESMOS.WEBP" alt="DESMOS Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
     </div>
+    <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
+      Independent Developer<br>@Desmos Studio
+    </h2>
+    <p>
+      This project showcases the integration of mathematical modeling, real-world applications, and educational tools using the power of Desmos. Each virtual model highlights the relevance of mathematics, physics, and chemistry through dynamic visualizations and computational solutions. Below is an organized and comprehensive summary of the project's components:
+    </p>
+
+    <!-- Real-World Applications -->
+    <h3>Real-World Applications</h3>
+    <h4>EV Future Market Share</h4>
+    <p>
+      <strong>Description:</strong> Uses Python and machine learning to perform statistical analysis and data regression, predicting the market share of electric vehicles through 2035.
+    </p>
+    <p>
+      <strong>Relevance:</strong> Highlights the intersection of data science, sustainability, and market dynamics.
+    </p>
+    <p>
+      <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">EV Future Market Share Model</a>
+    </p>
+
+    <h4>Cycloid Graph for Brachistochrone</h4>
+    <p>
+      <strong>Description:</strong> Visualizes and explains one of the most classic and time-consuming problems in the history of mathematics and physics: the Brachistochrone curve.
+    </p>
+    <p>
+      <strong>Relevance:</strong> Demonstrates the elegance of cycloidal curves in solving real-world problems of minimal time travel under gravity.
+    </p>
+    <p>
+      <strong>Links:</strong>
+      <a href="#" style="color: var(--color-accent); text-decoration: underline;">Cycloid Visualization 1</a>,
+      <a href="#" style="color: var(--color-accent); text-decoration: underline;">Cycloid Visualization 2</a>
+    </p>
+
+    <h4>Chemistry Calculator</h4>
+    <p>
+      <strong>Description:</strong> Effortlessly balances chemical equations, calculates molar ratios, and determines limiting reactants in multi-step reactions.
+    </p>
+    <p>
+      <strong>Relevance:</strong> Bridges the gap between abstract chemistry concepts and computational precision for practical applications.
+    </p>
+    <p>
+      <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Chemistry Calculator</a>
+    </p>
+
+    <!-- AP Calculus Theorem Virtual Models -->
+    <h3>AP Calculus Theorem Virtual Models</h3>
+    <ul style="line-height: 1.6;">
+      <li>
+        <strong>The Squeeze Theorem</strong><br>
+        <em>Concept:</em> Visualizes sin&theta;/&theta; limit behavior as &theta; approaches 0.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">The Squeeze Theorem</a>
+      </li>
+      <li>
+        <strong>Tangent Line Approximation</strong><br>
+        <em>Concept:</em> Demonstrates linear approximation of curves using tangents.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Tangent Line Approximation</a>
+      </li>
+      <li>
+        <strong>Area of a Region Between Two Curves</strong><br>
+        <em>Concept:</em> Calculates and visualizes the area enclosed by two curves.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Area Between Two Curves</a>
+      </li>
+      <li>
+        <strong>Volume: The Disk &amp; Washer Method</strong><br>
+        <em>Concept:</em> Explains volumetric calculations using the disk and washer method for rotational solids.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Disk &amp; Washer Method</a>
+      </li>
+      <li>
+        <strong>Volume: The Shell Method</strong><br>
+        <em>Concept:</em> Illustrates volume calculation using cylindrical shells.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Shell Method</a>
+      </li>
+      <li>
+        <strong>Derivatives, Arc Length, Surface Areas for Parametric Equations</strong><br>
+        <em>Concept:</em> Explores derivatives, arc lengths, and surface areas derived from parametric equations.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Parametric Equations</a>
+      </li>
+      <li>
+        <strong>Parametric Equations Powerful Techniques</strong><br>
+        <em>Concept:</em> Showcases advanced modeling techniques for parametric equations.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Advanced Parametric Techniques</a>
+      </li>
+      <li>
+        <strong>nth Complex Roots (Polar)</strong><br>
+        <em>Concept:</em> Visualizes and computes nth roots of complex numbers using polar coordinates.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Complex Roots in Polar Form</a>
+      </li>
+      <li>
+        <strong>Taylor Polynomial for f(x)=sin(x)</strong><br>
+        <em>Concept:</em> Expands sin(x) using Taylor series and visualizes convergence.<br>
+        <strong>Link:</strong> <a href="#" style="color: var(--color-accent); text-decoration: underline;">Taylor Polynomial</a>
+      </li>
+    </ul>
+
+    <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2024 Desmos Studio. All rights reserved.</p>
   </div>
+</div>
+
 
   <!-- Modal 3: PEM Fuel Cell Research -->
-  <div id="modal-fuelcell" class="modal hidden">
-    <div class="modal-content" style="position: relative; padding-top: 20px;">
-      <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
-      <div style="text-align: center; margin: 20px 0;">
-        <!-- 请确保 SARSEF.WEBP 文件已上传到正确目录 -->
-        <img src="SARSEF.WEBP" alt="SARSEF Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
-      </div>
-      <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
-        PEM Fuel Cell Researcher<br>@2024 SARSEF &amp; @2024 AIAA
-      </h2>
-      
-      <h3>Role Overview</h3>
-      <ul style="line-height: 1.6;">
-        <li>Investigated how temperature and reactant gas purity (electrolyzed H₂/O₂ vs. ambient air O₂) impact the energy conversion efficiency of PEM fuel cells.</li>
-        <li>Designed and conducted 60+ independent trials, measuring voltage, current, temperature, and gas consumption data under varied operating conditions.</li>
-        <li>Analyzed results using linear regression, significance tests, and two-sample t-tests to confirm efficiency gains at higher temperatures and with high-purity reactants.</li>
-        <li>Employed strict lab safety protocols and iterative improvements to enhance data precision, reducing experimental error in real-time measurements.</li>
-        <li>Formulated recommendations for next-generation PEM fuel cell design and optimization in clean energy applications.</li>
-      </ul>
-      
-      <h3>Key Skills &amp; Accomplishments</h3>
-      <ul style="line-height: 1.6;">
-        <li><strong>Experimental Design &amp; Data Collection:</strong> Developed robust procedures to measure and compare power output, thermal release, and reactant usage.</li>
-        <li><strong>Statistical Modeling:</strong> Applied regression analysis, hypothesis testing, and ANOVA to interpret efficiency trends and validate hypotheses.</li>
-        <li><strong>Technical Proficiency:</strong> Set up complex circuits with ammeters, voltmeters, variable resistors, and custom electronics for real-time monitoring.</li>
-        <li><strong>Process Optimization:</strong> Identified sources of experimental error (internal resistance, instrumentation limits) and proposed solutions to improve accuracy.</li>
-        <li><strong>Research Communication:</strong> Documented findings in detailed reports, complete with references to relevant literature and graphical data insights.</li>
-      </ul>
+  
+<div id="modal-fuelcell" class="modal hidden">
+  <div class="modal-content" style="position: relative; padding-top: 20px;">
+    <span class="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+    <div style="text-align: center; margin: 20px 0;">
+      <!-- 请确保 SERSEF.PNG 文件已上传到正确目录 -->
+      <img src="SARSEF.WEBP" alt="SARSEF Logo" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
     </div>
+    <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">
+      PEM Fuel Cell Researcher<br>@2024 SARSEF &amp; @2024 AIAA
+    </h2>
+    
+    <h3>Role Overview</h3>
+    <ul style="line-height: 1.6;">
+      <li>Investigated how temperature and reactant gas purity (electrolyzed H₂/O₂ vs. ambient air O₂) impact the energy conversion efficiency of PEM fuel cells.</li>
+      <li>Designed and conducted 60+ independent trials, measuring voltage, current, temperature, and gas consumption data under varied operating conditions.</li>
+      <li>Analyzed results using linear regression, significance tests, and two-sample t-tests to confirm efficiency gains at higher temperatures and with high-purity reactants.</li>
+      <li>Employed strict lab safety protocols and iterative improvements to enhance data precision, reducing experimental error in real-time measurements.</li>
+      <li>Formulated recommendations for next-generation PEM fuel cell design and optimization in clean energy applications.</li>
+    </ul>
+    
+    <h3>Key Skills &amp; Accomplishments</h3>
+    <ul style="line-height: 1.6;">
+      <li><strong>Experimental Design &amp; Data Collection:</strong> Developed robust procedures to measure and compare power output, thermal release, and reactant usage.</li>
+      <li><strong>Statistical Modeling:</strong> Applied regression analysis, hypothesis testing, and ANOVA to interpret efficiency trends and validate hypotheses.</li>
+      <li><strong>Technical Proficiency:</strong> Set up complex circuits with ammeters, voltmeters, variable resistors, and custom electronics for real-time monitoring.</li>
+      <li><strong>Process Optimization:</strong> Identified sources of experimental error (internal resistance, instrumentation limits) and proposed solutions to improve accuracy.</li>
+      <li><strong>Research Communication:</strong> Documented findings in detailed reports, complete with references to relevant literature and graphical data insights.</li>
+    </ul>
   </div>
+</div>
+
 
   <!-- ========== 脚本：轮播 + Modal控制 ========== -->
   <script defer>
